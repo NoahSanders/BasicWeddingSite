@@ -3,9 +3,21 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="style/style.css" />
+        <script type="text/javascript" src="js/script.js"></script>
     </head>
     <body>
+        <!-- AddToCalendar script -->
+        <script type="text/javascript">(function () {
+                if (window.addtocalendar)if(typeof window.addtocalendar.start == "function")return;
+                if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1;
+                    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                    s.type = 'text/javascript';s.charset = 'UTF-8';s.async = true;
+                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')+'://addtocalendar.com/atc/1.5/atc.min.js';
+                    var h = d[g]('body')[0];h.appendChild(s); }})();
+        </script>
+
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -20,22 +32,19 @@
                 <div class="collapse navbar-collapse" id="main-navigation">
                     <ul class="nav navbar-nav navbar-center">
                         <li>
-                            <a href="#">Photos</a>
+                            <a href="#informationSection">Information</a>
                         </li>
                         <li>
-                            <a href="#">Information</a>
-                        </li>
-                        <li>
-                            <a href="#">Registry</a>
-                        </li>
-                        <li>
-                            <a href="#">RSVP</a>
+                            <a href="#registrySection">Registry</a>
                         </li>
                     </ul>
+                    <button type="button" class="btn btn-primary navbar-btn navbar-right">RSVP</button>
                 </div>
             </div>
         </nav>
-        <div class="container-fluid col-med-12">
+
+        <!-- Carousel section -->
+        <div id="carousel-container" class="container">
             <div id="imageCarousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
@@ -45,13 +54,13 @@
 
                 <div class="carousel-inner" role="listbox" data-ride="carousel">
                     <div class="carousel-item item active">
-                        <img class="d-block img-fluid first-slide" src="img/slide1.jpg" alt="First Slide">
+                        <img class="d-block img-responsive first-slide" src="img/slide1.jpg" alt="First Slide">
                     </div>
                     <div class="carousel-item item">
-                        <img class="d-block img-fluid second-slide" src="img/slide2.jpg" alt="Second Slide">
+                        <img class="d-block img-responsive second-slide" src="img/slide2.jpg" alt="Second Slide">
                     </div>
                     <div class="carousel-item item">
-                        <img class="d-block img-fluid third-slide" src="img/slide3.jpg" alt="Third Slide">
+                        <img class="d-block img-responsive third-slide" src="img/slide3.jpg" alt="Third Slide">
                     </div>
                 </div>
                 <a class="left carousel-control" href="#imageCarousel" role="button" data-slide="prev">
@@ -59,12 +68,59 @@
                     </span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#imageCarousel" role="button" data-slide="nextprev">
+                <a class="right carousel-control" href="#imageCarousel" role="button" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
                     </span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+        </div>
+
+        <!-- Information section -->
+        <div id="informationSection" class="container">
+            <h2 class="text-center">Information</h2>
+            <div id="dateSection" class="col-sm-3 infoCenter">
+                <h3>Date</h3>
+                <address> 
+                    January 20, 2018<br />
+                    5pm Central Time 
+                </address>
+                <button type="button" class="addtocalendar btn btn-default">
+                    <var class="atc_event">
+                        <var class="atc_date_start">2018-01-20 17:00:00</var>
+                        <var class="atc_date_end">2018-01-20 22:00:00</var>
+                        <var class="atc_timezone">America/Chicago</var>
+                        <var class="atc_title">Noah and Parker's Wedding</var>
+                        <var class="atc_location">The Cordelle</var>
+                    </var>
+                </button>
+            </div>
+            <div id="locationSection" class="col-sm-3 infoCenter">
+                <div class="">
+                    <h3>Location</h3>
+                    <h4>
+                        <a href="http://thecordelle.com/">The Cordelle</a>
+                    </h4>
+                    <address>
+                        45 Lindsley Ave<br />
+                        Nashville, TN 37210<br />
+                    </address>
+                    <button type="button" class="btn btn-default">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=The+Cordelle+Nashville+TN">Directions</a>
+                    </button>
+                </div>
+            </div>
+            <div id="mapSection" class="col-sm-6 infoCenter">
+                <div class="">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.5295681302277!2d-86.7673081842491!3d36.153665980086835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864666a6dd93fb3%3A0xbc5eb863354dfaa6!2sThe+Cordelle!5e0!3m2!1sen!2sus!4v1499540354106" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registry Section-->
+        <div id="registrySection" class="container">
+            <h2 class="text-center">Registry</h2>
+            
         </div>
     </body>
 </html>

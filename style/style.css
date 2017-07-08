@@ -1,3 +1,6 @@
+/* GLOBAL */
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Source+Sans+Pro');
+
 @media (min-width: 768px) {
   .navbar-nav.navbar-center {
     position: absolute;
@@ -6,12 +9,58 @@
   }
 }
 
-.carousel {
-    height:500px;
-    margin-bottom: 60px;
+body {
+  /*font-family: 'Droid Serif', serif;*/
+  font-family: 'Source Sans Pro', sans-serif;
+  /*background-color: #DBC2CF;
+  color: #020202;*/
 }
 
-.carousel img {
-    max-height:500px;
-    margin:auto;
+/* NAVIGATION */
+
+nav {
+  /*background-color: #9FA2B2;*/
 }
+
+.navbar-btn {
+  width: 100px;
+}
+
+#main-navigation a {
+  font-size: 18px;
+}
+
+/* IMAGE CAROUSEL */
+
+.carousel {
+  max-height: 500px;
+  margin-bottom: 60px;
+}
+
+#carousel-container, #carousel-container img {
+  max-height: 500px;
+  margin: auto;
+}
+
+/* INFORMATION SECTION */
+
+#informationSection {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.infoCenter {
+  margin: auto;
+  text-align: center;
+}
+
+#mapSection {
+  padding-top: 20px;
+}
+
+#informationSection a {
+  /* TODO: Need to add style for anchors */
+}
+
+/* REGISTRY SECTION */
+
