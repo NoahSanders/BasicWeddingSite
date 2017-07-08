@@ -18,7 +18,8 @@
                     var h = d[g]('body')[0];h.appendChild(s); }})();
         </script>
 
-        <nav class="navbar navbar-default">
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navigation" aria-expanded="false">
@@ -27,15 +28,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Noah and Parker</a>
+                    <a class="navbar-brand" href="#">Noah and Parker's Wedding</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-navigation">
                     <ul class="nav navbar-nav navbar-center">
                         <li>
-                            <a href="#informationSection">Information</a>
+                            <a href="#About">About Noah & Parker</a>
                         </li>
                         <li>
-                            <a href="#registrySection">Registry</a>
+                            <a href="#WhenWhere">When & Where</a>
+                        </li>
+                        <li>
+                            <a href="#Registry">Registry</a>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-primary navbar-btn navbar-right">RSVP</button>
@@ -76,10 +80,23 @@
             </div>
         </div>
 
+        <div id="About" class="container">
+            <h2 class="text-center">About Noah & Parker</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id aliquet est. Donec egestas, justo sed vestibulum faucibus, nisi neque semper ligula, ut ultrices nisl felis posuere justo. Cras enim magna, venenatis sed placerat eget, imperdiet vel erat. Nam tincidunt ac libero quis pharetra. Etiam lacus ligula, venenatis in lectus non, iaculis ullamcorper orci. Donec eu porta ante. Etiam nec nulla eu ipsum ultricies eleifend. Donec lobortis urna ut aliquet congue. Integer accumsan ornare magna sit amet lobortis. Mauris urna nisi, pretium a massa sed, tempor efficitur erat. Mauris viverra, ex sit amet posuere varius, sapien libero luctus tellus, vel iaculis sapien nunc et eros. Integer nec varius sem.
+            </p>
+            <p>
+                Nunc magna nulla, commodo ut enim ac, venenatis tincidunt sem. Vestibulum id mi iaculis, condimentum eros at, gravida urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras nec risus quis mauris laoreet luctus et et massa. Vivamus pellentesque orci quam, eu mattis tellus tempor vitae. Sed fermentum bibendum tempus. Vivamus commodo rutrum ligula, ac mattis enim elementum ac. Pellentesque luctus venenatis est, et interdum arcu semper quis. Fusce eget risus sit amet tortor rhoncus lobortis. Pellentesque mollis libero libero, eu lacinia risus rutrum id. Curabitur vel augue sodales, imperdiet nibh in, facilisis sem.
+            </p>
+            <p>
+                Phasellus nec quam sed neque iaculis laoreet et vestibulum eros. Morbi vitae turpis faucibus, fermentum neque non, sollicitudin eros. Sed hendrerit odio tellus, non mollis lectus lacinia volutpat. Nunc faucibus velit maximus erat rutrum aliquet sit amet sagittis sapien. Sed ultricies euismod pretium. Donec porta, nulla eu rhoncus fringilla, nisi ante rhoncus sem, sed semper nunc nunc vitae justo. Cras efficitur neque ac sollicitudin vehicula. Ut id purus ac dolor commodo pellentesque eu tincidunt lacus. In ex arcu, luctus ornare eros a, aliquet fermentum nunc. Integer non gravida arcu. In quis justo ut nulla auctor molestie sed non neque. Duis accumsan, lectus ultricies viverra tempus, erat urna dapibus ipsum, non maximus purus est id eros. Duis sit amet ipsum enim. Nulla sapien risus, blandit in faucibus ac, convallis eu dolor. Vestibulum condimentum arcu consequat odio consectetur elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+        </div>
+
         <!-- Information section -->
-        <div id="informationSection" class="container">
-            <h2 class="text-center">Information</h2>
-            <div id="dateSection" class="col-sm-3 infoCenter">
+        <div id="WhenWhere" class="container">
+            <h2 class="text-center">When & Where</h2>
+            <div id="dateSection" class="col-sm-12 col-lg-2 center-content">
                 <h3>Date</h3>
                 <address> 
                     January 20, 2018<br />
@@ -94,31 +111,25 @@
                         <var class="atc_location">The Cordelle</var>
                     </var>
                 </button>
+                <h3>Location</h3>
+                <h4>
+                    <a href="http://thecordelle.com/">The Cordelle</a>
+                </h4>
+                <address>
+                    45 Lindsley Ave<br />
+                    Nashville, TN 37210<br />
+                </address>
+                <button type="button" class="btn btn-default">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=The+Cordelle+Nashville+TN">Directions</a>
+                </button>
             </div>
-            <div id="locationSection" class="col-sm-3 infoCenter">
-                <div class="">
-                    <h3>Location</h3>
-                    <h4>
-                        <a href="http://thecordelle.com/">The Cordelle</a>
-                    </h4>
-                    <address>
-                        45 Lindsley Ave<br />
-                        Nashville, TN 37210<br />
-                    </address>
-                    <button type="button" class="btn btn-default">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=The+Cordelle+Nashville+TN">Directions</a>
-                    </button>
-                </div>
-            </div>
-            <div id="mapSection" class="col-sm-6 infoCenter">
-                <div class="">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.5295681302277!2d-86.7673081842491!3d36.153665980086835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864666a6dd93fb3%3A0xbc5eb863354dfaa6!2sThe+Cordelle!5e0!3m2!1sen!2sus!4v1499540354106" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
+            <div id="mapSection" class="col-lg-10 hidden-md center-content">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.5295681302277!2d-86.7673081842491!3d36.153665980086835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864666a6dd93fb3%3A0xbc5eb863354dfaa6!2sThe+Cordelle!5e0!3m2!1sen!2sus!4v1499540354106" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
 
         <!-- Registry Section-->
-        <div id="registrySection" class="container">
+        <div id="Registry" class="container">
             <h2 class="text-center">Registry</h2>
             
         </div>

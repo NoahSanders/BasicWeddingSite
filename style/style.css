@@ -1,7 +1,7 @@
 /* GLOBAL */
 @import url('https://fonts.googleapis.com/css?family=Droid+Serif|Source+Sans+Pro');
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .navbar-nav.navbar-center {
     position: absolute;
     left: 50%;
@@ -14,16 +14,24 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   /*background-color: #DBC2CF;
   color: #020202;*/
+
+  padding-top: 70px; 
 }
 
 /* NAVIGATION */
 
 nav {
+  /* TODO: give this a background color? */
   /*background-color: #9FA2B2;*/
 }
 
 .navbar-btn {
-  width: 100px;
+  width: 98px;
+}
+
+/* Centers collapsed navbar options */
+.navbar .navbar-collapse {
+  text-align: center;
 }
 
 #main-navigation a {
@@ -49,12 +57,13 @@ nav {
   font-size: 16px;
 }
 
-.infoCenter {
+.center-content {
   margin: auto;
   text-align: center;
 }
 
 #mapSection {
+  margin-top: 20px;
   padding-top: 20px;
 }
 
