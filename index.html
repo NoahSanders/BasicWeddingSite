@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style/style.css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navigation" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Noah and Parker</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li>
+                            <a href="#">Photos</a>
+                        </li>
+                        <li>
+                            <a href="#">Information</a>
+                        </li>
+                        <li>
+                            <a href="#">Registry</a>
+                        </li>
+                        <li>
+                            <a href="#">RSVP</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#imageCarousel" data-slide-to="1"></li>
+                <li data-target="#imageCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner" role="listbox" data-ride="carousel">
+                <div class="carousel-item item active">
+                    <img class="first-slide" src="img/slide1.jpg" alt="First Slide">
+                </div>
+                <div class="carousel-item item">
+                    <img class="second-slide" src="img/slide2.jpg" alt="Second Slide">
+                </div>
+                <div class="carousel-item item">
+                    <img class="third-slide" src="img/slide3.jpg" alt="Third Slide">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#imageCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                </span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#imageCarousel" role="button" data-slide="nextprev">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                </span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </body>
+</html>
