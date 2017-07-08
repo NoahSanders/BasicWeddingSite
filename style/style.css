@@ -10,3 +10,8 @@
     height:500px;
     margin-bottom: 60px;
 }
+
+.carousel img {
+    max-height:500px;
+    margin:auto;
+}
