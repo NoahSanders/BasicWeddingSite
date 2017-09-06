@@ -8,16 +8,6 @@
         <script type="text/javascript" src="js/script.js"></script>
     </head>
     <body>
-        <!-- AddToCalendar script -->
-        <script type="text/javascript">(function () {
-                if (window.addtocalendar)if(typeof window.addtocalendar.start == "function")return;
-                if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1;
-                    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                    s.type = 'text/javascript';s.charset = 'UTF-8';s.async = true;
-                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')+'://addtocalendar.com/atc/1.5/atc.min.js';
-                    var h = d[g]('body')[0];h.appendChild(s); }})();
-        </script>
-
         <!-- Navigation bar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -134,7 +124,6 @@
             
         </div>
 
-        <!-- RSVP Modal -->
         <div class="modal fade" id="rsvpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -142,18 +131,35 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">RSVP</h4>
                     </div>
-                    <div class="modal-body">
-                        <div class="input-group" id="nameInput">
-                            <label for="rsvp_name">Name:</label>
-                            <input type="text" id="rsvp_name" class="form-control" placeholder="Enter your name here">
+                    <div class="modal-body row">
+                        <div class="col-lg-6">
+                            <label for="last_name">Last Name:</label>
+                            <div class="input-group" id="nameInput">
+                                <input type="text" id="rsvp_last_name" class="form-control" placeholder="Enter your last name here">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" id="name_search_submit">Search</button>
+                                </span>
+                            </div>
                         </div>
-                        <div class="input-group" id="guestNumberInput">
-                            <label for="rsvp_guestNumber">Number of Guests</label>
-                            <input type="number" class="form-control" placeholder="How many guests are you bringing?">
+                        <div class="col-lg-6">
+                            <div id="guest_full_name_input" class="hidden">
+                                <label>Please Choose the correct name below:</label>
+                                <ul class="list-group" id="full_name_select">
+                                    <li class="list-group-item">Noah Sanders</li>
+                                    <li class="list-group-item">Parker Aycock</li>
+                                    <li class="list-group-item">Chris and Meitra Aycock</li>
+                                </ul>
+                            </div>
+                            <div id="guest_number_input" class="hidden">
+                                <label for="rsvp_guestNumber">Number of Guests</label>
+                                <div class="input-group" id="guestNumberInput">
+                                    <input type="number" class="form-control" placeholder="How many guests are you bringing?">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Submit</button>
                     </div>
                 </div>
             </div>
