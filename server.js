@@ -10,6 +10,8 @@ var listen = function() {
     app.use(bodyParser.urlencoded({extended: true }));
     app.use(bodyParser.json());
 
+    app.use(express.static('public'));
+
     var routes = require('./routes/guestRoutes');
     routes(app);
 
@@ -18,7 +20,3 @@ var listen = function() {
 };
 
 listen();
-
-function createGuest(guestObject, connection) {
-    
-}

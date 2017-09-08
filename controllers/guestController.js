@@ -1,4 +1,3 @@
-'use strict';
 const mysql = require('mysql');
 const sanitizer = require('sanitizer');
 const login = require('./login.json');
