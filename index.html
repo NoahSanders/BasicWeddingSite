@@ -4,6 +4,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <link rel="stylesheet" href="style/style.css" />
         <script type="text/javascript" src="js/script.js"></script>
     </head>
@@ -140,26 +142,34 @@
                                     <button type="button" class="btn btn-default" id="name_search_submit">Search</button>
                                 </span>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div id="guest_full_name_input" class="hidden">
-                                <label>Please Choose the correct name below:</label>
-                                <ul class="list-group" id="full_name_select">
-                                    <li class="list-group-item">Noah Sanders</li>
-                                    <li class="list-group-item">Parker Aycock</li>
-                                    <li class="list-group-item">Chris and Meitra Aycock</li>
-                                </ul>
+
+                            <div id="status_select_section" class="hidden">
+                                <label for="status_select">RSVP Status</label>
+                                <input type="checkbox" id="status_select" >
                             </div>
+                            
                             <div id="guest_number_input" class="hidden">
                                 <label for="rsvp_guestNumber">Number of Guests</label>
                                 <div class="input-group" id="guestNumberInput">
-                                    <input type="number" class="form-control" placeholder="How many guests are you bringing?">
+                                    <span class="input-group-btn">
+                                        <button id="minusOne" class="btn btn-danger" type="button">-</button>
+                                    </span>
+                                    <input id="guest_count" type="number" class="form-control" placeholder="How many guests?" disabled>
+                                    <span class="input-group-btn">
+                                        <button id="plusOne" class="btn btn-success" type="button">+</button>
+                                    </span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div id="guest_full_name_input" class="hidden">
+                                <label>Please choose the name of your group below:</label>
+                                <ul class="list-group" id="full_name_select"></ul>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Submit</button>
+                        <button id="rsvp_submit" type="button" class="btn btn-primary" data-dismiss="modal" disabled>Submit</button>
                     </div>
                 </div>
             </div>
