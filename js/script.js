@@ -24,29 +24,15 @@ function pageSetup() {
     });
 
     $('#status_select').change(function() {
-        let currentStatus = $(this).prop('checked');
-        if (currentStatus) {
-            $('#guest_number_input').removeClass('hidden');
-            let currentGuestCount = Number.parseInt($('#guest_count').val());
-            console.log(currentGuestCount);
-            if(currentGuestCount) {
-                $("#rsvp_submit").prop('disabled',false);
-            }
-            else {
-                $("#rsvp_submit").prop('disabled',true);
-            }
-        }
-        else {
-            $('#guest_number_input').addClass('hidden'); 
-            $("#rsvp_submit").prop('disabled',false);
-        }
+        setSubmitButtonStatus();
+        enableNumberOfGuestsIfNecessary();
     });
 
     $("#guest_count").change(function() {
-        $('#rsvp_submit').prop('disabled', false);
+        setSubmitButtonStatus();
 
         var currentVal = $('#guest_count').val();
-        if (currentVal = 1){
+        if (currentVal == 1){
             $('#minusOne').prop('disabled', true);
         }
         else {
@@ -63,7 +49,7 @@ function pageSetup() {
             $('#guest_count').val(currentVal+1);
         }
 
-        $("#rsvp_submit").prop('disabled',false);
+        setSubmitButtonStatus();
     });
 
     $("#minusOne").click(function() {
@@ -75,18 +61,41 @@ function pageSetup() {
             $('#guest_count').val(currentVal-1);
         }
 
-        $("#rsvp_submit").prop('disabled',false);
+        setSubmitButtonStatus();
     });
 }
 
 function rsvpSubmit() {
-    //do stuff here for rsvp
+    const attendingString = isAttending() ? "Attending" : "Nope";
+
+    let request = {
+        "status": attendingString
+    };
+
+    if (isAttending) {
+        request.guest_count = $('#guest_count').val();
+    }
+
+    $.ajax({
+        url: RsvpApiUrl+'/'+$('.list-group-item.active').prop('id'),
+        type: 'PUT',
+        data: request
+    })
+    .done(function() {
+        //TODO: Need success logic
+    })
+    .fail(function() {
+        //TODO: Need API fail logic
+    });
 
     $('#rsvp_modal').modal('toggle');
 }
 
 function findGuest() {  
     $('#status_select_section').addClass('hidden');
+    $('#guest_number_input').addClass('hidden');
+    $('#guest_count').val(1); //set guest count to 1 to prevent undefined count
+    
     var lastName = $('#rsvp_last_name').val();
 
     $.get(RsvpApiUrl + '/?lastName=' + lastName)
@@ -94,7 +103,7 @@ function findGuest() {
             var choicesHTML = '';
             if (data.guests.length) {
                 for (var i=0; i<data.guests.length; i++) {
-                    choicesHTML += '<a href="#" class="list-group-item list-group-item-action" id="' + data.guests[i] +'">' + data.guests[i].name + '</li>';
+                    choicesHTML += '<a href="#" class="list-group-item list-group-item-action" id="' + data.guests[i].id +'">' + data.guests[i].name + '</li>';
                 }
             }
             else {
@@ -107,9 +116,45 @@ function findGuest() {
                 e.preventDefault();
                 $(this).addClass('active').siblings().removeClass('active');
                 $('#status_select_section').removeClass('hidden');
-                $("#rsvp_submit").prop('disabled',false);
+                
+                enableNumberOfGuestsIfNecessary();
+
+                setSubmitButtonStatus();
             });
 
+            setSubmitButtonStatus();
             $('#guest_full_name_input').removeClass('hidden');
         });
+}
+
+function enableNumberOfGuestsIfNecessary() {
+    if (isAttending()) {
+        $('#guest_number_input').removeClass('hidden');
+    }
+    else {
+        $('#guest_number_input').addClass('hidden');
+    }
+}
+
+function isAttending() {
+    return $('#status_select').prop('checked');
+}
+
+function setSubmitButtonStatus() {
+    if (isReadyToSubmit()) {
+        $("#rsvp_submit").prop('disabled',false);
+    }
+    else {
+        $("#rsvp_submit").prop('disabled',true);
+    }
+}
+
+function isReadyToSubmit() {
+    if (!$('.list-group-item.active').get(0)) {
+        return false;
+    }
+    if (isAttending() && !$('#guest_count').val()>0) {
+        return false;
+    }
+    return true;
 }
