@@ -1,7 +1,9 @@
 $(document).ready(pageSetup);
-var RsvpApiUrl = 'http://localhost:3000/guests';
+let RsvpApiUrl = 'http://sanders-aycock-wedding.com:3000/guests';
 
 function pageSetup() {
+    
+
     //Set up add to calendar
     if (window.addtocalendar) if(typeof window.addtocalendar.start == "function") return;
     if (window.ifaddtocalendar == undefined) { 
