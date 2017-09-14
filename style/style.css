@@ -27,6 +27,10 @@ body {
   padding-top: 70px; 
 }
 
+body p {
+  text-align:center;
+}
+
 /* NAVIGATION */
 
 nav {
