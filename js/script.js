@@ -18,18 +18,18 @@ function pageSetup() {
 
     $("#status_select").bootstrapToggle({
         on: "I will attend",
-        off: "I will not attend",
+        off: "I can't attend",
         width:"100%",
         offstyle:"danger"
     });
 
     $('#status_select').change(function() {
-        setSubmitButtonStatus();
-        enableNumberOfGuestsIfNecessary();
+        showHideSubmitButton();
+        showHideGuestNumber();
     });
 
     $("#guest_count").change(function() {
-        setSubmitButtonStatus();
+        showHideSubmitButton();
 
         var currentVal = $('#guest_count').val();
         if (currentVal == 1){
@@ -45,11 +45,11 @@ function pageSetup() {
         if (!currentVal) {
             $('#guest_count').val(1);
         }
-        else {
+        else if (currentVal < 10){
             $('#guest_count').val(currentVal+1);
         }
 
-        setSubmitButtonStatus();
+        showHideSubmitButton();
     });
 
     $("#minusOne").click(function() {
@@ -61,7 +61,7 @@ function pageSetup() {
             $('#guest_count').val(currentVal-1);
         }
 
-        setSubmitButtonStatus();
+        showHideSubmitButton();
     });
 }
 
@@ -117,17 +117,17 @@ function findGuest() {
                 $(this).addClass('active').siblings().removeClass('active');
                 $('#status_select_section').removeClass('hidden');
                 
-                enableNumberOfGuestsIfNecessary();
+                showHideGuestNumber();
 
-                setSubmitButtonStatus();
+                showHideSubmitButton();
             });
 
-            setSubmitButtonStatus();
+            showHideSubmitButton();
             $('#guest_full_name_input').removeClass('hidden');
         });
 }
 
-function enableNumberOfGuestsIfNecessary() {
+function showHideGuestNumber() {
     if (isAttending()) {
         $('#guest_number_input').removeClass('hidden');
     }
@@ -140,13 +140,14 @@ function isAttending() {
     return $('#status_select').prop('checked');
 }
 
-function setSubmitButtonStatus() {
+function showHideSubmitButton() {
     if (isReadyToSubmit()) {
         $("#rsvp_submit").prop('disabled',false);
     }
     else {
         $("#rsvp_submit").prop('disabled',true);
     }
+    showHideNotes();
 }
 
 function isReadyToSubmit() {
@@ -157,4 +158,13 @@ function isReadyToSubmit() {
         return false;
     }
     return true;
+}
+
+function showHideNotes() {
+    if (isReadyToSubmit()) {
+        $('#notes_input').removeClass('hidden');
+    }
+    else {
+        $('#notes_input').addClass('hidden');
+    }
 }
