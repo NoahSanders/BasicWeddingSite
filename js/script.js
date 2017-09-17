@@ -1,5 +1,5 @@
 $(document).ready(pageSetup);
-let RsvpApiUrl = 'http://sanders-aycock-wedding.com:3000/guests';
+let RsvpApiUrl = 'http://sanders-aycock-wedding.com:3000';
 
 function pageSetup() {
     
@@ -43,7 +43,7 @@ function pageSetup() {
     });
 
     $("#plusOne").click(function() {
-        var currentVal = Number.parseInt($('#guest_count').val());
+        var currentVal = parseInt($('#guest_count').val());
         if (!currentVal) {
             $('#guest_count').val(1);
         }
@@ -55,7 +55,7 @@ function pageSetup() {
     });
 
     $("#minusOne").click(function() {
-        var currentVal = Number.parseInt($('#guest_count').val());
+        var currentVal = parseInt($('#guest_count').val());
         if (currentVal<=1) {
             $('#guest_count').val(1);
         }
@@ -70,18 +70,35 @@ function pageSetup() {
 function rsvpSubmit() {
     const attendingString = isAttending() ? "Attending" : "Nope";
 
-    let request = {
+    let guestRequest = {
         "status": attendingString
     };
 
     if (isAttending) {
-        request.guest_count = $('#guest_count').val();
+        guestRequest.guest_count = $('#guest_count').val();
     }
 
     $.ajax({
-        url: RsvpApiUrl+'/'+$('.list-group-item.active').prop('id'),
+        url: RsvpApiUrl+'/guests/'+$('.list-group-item.active').prop('id'),
         type: 'PUT',
-        data: request
+        data: guestRequest
+    })
+    .done(function() {
+        //TODO: Need success logic
+    })
+    .fail(function() {
+        //TODO: Need API fail logic
+    });
+
+    let messageRequest = {
+        message: $('#notes_input').val(),
+        guest_id: $('.list-group-item.active').prop('id')
+    };
+
+    $.ajax({
+        url: RsvpApiUrl+'/messages',
+        type: 'POST',
+        data: messageRequest
     })
     .done(function() {
         //TODO: Need success logic
@@ -100,7 +117,7 @@ function findGuest() {
     
     var lastName = $('#rsvp_last_name').val();
 
-    $.get(RsvpApiUrl + '/?lastName=' + lastName)
+    $.get(RsvpApiUrl + '/guests?lastName=' + lastName)
         .done(function(data) {
             var choicesHTML = '';
             if (data.guests.length) {
@@ -164,9 +181,9 @@ function isReadyToSubmit() {
 
 function showHideNotes() {
     if (isReadyToSubmit()) {
-        $('#notes_input').removeClass('hidden');
+        $('#notes_input_section').removeClass('hidden');
     }
     else {
-        $('#notes_input').addClass('hidden');
+        $('#notes_input_section').addClass('hidden');
     }
 }
