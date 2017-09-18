@@ -65,6 +65,13 @@ function pageSetup() {
 
         showHideSubmitButton();
     });
+
+    $("nav").find("li").on("click", "a", function () {
+        $('.navbar-collapse.in').collapse('hide');
+    });
+    $(".collapse").find("button").on("click", function () {
+        $('.navbar-collapse.in').collapse('hide');
+    });
 }
 
 function rsvpSubmit() {

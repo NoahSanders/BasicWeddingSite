@@ -80,11 +80,28 @@ nav {
   padding-top: 20px;
 }
 
+#dateSection {
+  padding-bottom: 20px;
+}
+
 #informationSection a {
   /* TODO: Need to add style for anchors */
 }
 
 /* REGISTRY SECTION */
+
+.img-container {
+  position:relative;
+  display: inline-block;
+  overflow:hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.registry-img {
+  width:80%;
+  height:auto;
+}
 
 /* RSVP MODAL */
 /*.modal-body div {
