@@ -1,9 +1,7 @@
 $(document).ready(pageSetup);
-let RsvpApiUrl = 'http://sanders-aycock-wedding.com:3000';
+const RsvpApiUrl = 'http://' + window.location.hostname + ':3000';
 
 function pageSetup() {
-    
-
     //Set up add to calendar
     if (window.addtocalendar) if(typeof window.addtocalendar.start == "function") return;
     if (window.ifaddtocalendar == undefined) { 
@@ -72,53 +70,69 @@ function pageSetup() {
     $(".collapse").find("button").on("click", function () {
         $('.navbar-collapse.in').collapse('hide');
     });
+
+    $('.evaluate_submit').on("change keyup paste", function(event) {
+        showHideSubmitButton();
+    });
 }
 
 function rsvpSubmit() {
-    const attendingString = isAttending() ? "Attending" : "Nope";
+    if ($('#guest_not_found_alert').hasClass('hidden')) {
+        const attendingString = isAttending() ? "Attending" : "Nope";
 
-    let guestRequest = {
-        "status": attendingString
-    };
+        let guestRequest = {
+            "status": attendingString
+        };
 
-    if (isAttending) {
-        guestRequest.guest_count = $('#guest_count').val();
+        if (isAttending) {
+            guestRequest.guest_count = $('#guest_count').val();
+        }
+
+        $.ajax({
+            url: RsvpApiUrl+'/guests/'+$('.list-group-item.active').prop('id'),
+            type: 'PUT',
+            data: guestRequest
+        })
+        .done(function() {
+            //TODO: Need success logic
+        })
+        .fail(function() {
+            //TODO: Need API fail logic
+        });
     }
 
-    $.ajax({
-        url: RsvpApiUrl+'/guests/'+$('.list-group-item.active').prop('id'),
-        type: 'PUT',
-        data: guestRequest
-    })
-    .done(function() {
-        //TODO: Need success logic
-    })
-    .fail(function() {
-        //TODO: Need API fail logic
-    });
+    let notes_value = getNotes();
 
-    let messageRequest = {
-        message: $('#notes_input').val(),
-        guest_id: $('.list-group-item.active').prop('id')
-    };
-
-    $.ajax({
-        url: RsvpApiUrl+'/messages',
-        type: 'POST',
-        data: messageRequest
-    })
-    .done(function() {
-        //TODO: Need success logic
-    })
-    .fail(function() {
-        //TODO: Need API fail logic
-    });
+    if (notes_value) {
+        let messageRequest = {
+            message: notes_value,
+            guest_id: $('.list-group-item.active').prop('id'),
+            contact_email: $('#contact_email').val(),
+            custom_name: $('#custom_name').val()
+        };
+    
+        $.ajax({
+            url: RsvpApiUrl+'/messages',
+            type: 'POST',
+            data: messageRequest
+        })
+        .done(function() {
+            //TODO: Need success logic...?
+            
+        })
+        .fail(function() {
+            //TODO: Need API fail logic
+        });
+    }
 
     $('#rsvp_modal').modal('toggle');
 }
 
 function findGuest() {  
+    clearFields();
+    hideGuestNotFoundSection();
     $('#status_select_section').addClass('hidden');
+    $('#guest_full_name_input').addClass('hidden');
     $('#guest_number_input').addClass('hidden');
     $('#guest_count').val(1); //set guest count to 1 to prevent undefined count
     
@@ -131,12 +145,12 @@ function findGuest() {
                 for (var i=0; i<data.guests.length; i++) {
                     choicesHTML += '<a href="#" class="list-group-item list-group-item-action" id="' + data.guests[i].id +'">' + data.guests[i].name + '</li>';
                 }
+                $('#full_name_select').html(choicesHTML);
+                $('#guest_full_name_input').removeClass('hidden');
             }
             else {
-                choicesHTML = '<li class="list-group-item list-group-item-action disabled">No results found for selected last name.</li>';
+                showGuestNotFoundAlert();
             }
-
-            $('#full_name_select').html(choicesHTML);
 
             $('a.list-group-item').click(function(e) {
                 e.preventDefault();
@@ -144,13 +158,20 @@ function findGuest() {
                 $('#status_select_section').removeClass('hidden');
                 
                 showHideGuestNumber();
-
                 showHideSubmitButton();
             });
 
+            showHideNotes();
             showHideSubmitButton();
-            $('#guest_full_name_input').removeClass('hidden');
         });
+}
+
+function showGuestNotFoundAlert() {
+    $('#guest_not_found_container').removeClass('hidden');
+}
+
+function hideGuestNotFoundSection() {
+    $('#guest_not_found_container').addClass('hidden');
 }
 
 function showHideGuestNumber() {
@@ -177,12 +198,18 @@ function showHideSubmitButton() {
 }
 
 function isReadyToSubmit() {
-    if (!$('.list-group-item.active').get(0)) {
+    if ($('#guest_not_found_container').hasClass('hidden')) {
+        if (!$('.list-group-item.active').get(0)) {
+            return false;
+        }
+        if (isAttending() && !$('#guest_count').val()>0) {
+            return false;
+        }
+    }
+    else if (!getNotes() || !$('#custom_name').val() || !$('#contact_email').val()) {
         return false;
     }
-    if (isAttending() && !$('#guest_count').val()>0) {
-        return false;
-    }
+    
     return true;
 }
 
@@ -190,7 +217,20 @@ function showHideNotes() {
     if (isReadyToSubmit()) {
         $('#notes_input_section').removeClass('hidden');
     }
+    else if (!$('#guest_not_found_alert').hasClass('hidden')) {
+        $('#notes_input_section').removeClass('hidden');
+    }
     else {
         $('#notes_input_section').addClass('hidden');
     }
+}
+
+function getNotes() {
+    return $('#notes_input').val();
+}
+
+function clearFields() {
+    $('#full_name_select').html('');
+    $('#custom_name').val('');
+    $('#contact_email').val('');
 }

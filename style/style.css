@@ -18,6 +18,11 @@ html,body
     overflow-x: hidden; 
 }
 
+h2 {
+  margin-top:0px;
+  padding-top:0px;
+}
+
 body {
   /*font-family: 'Droid Serif', serif;*/
   font-family: 'Source Sans Pro', sans-serif;
@@ -29,6 +34,27 @@ body {
 
 body p {
   text-align:center;
+}
+
+hr {
+  height: 30px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+  width:90%;
+  margin-bottom:0px;
+}
+hr:before {
+  display: block;  
+  content: "";
+  height: 30px; 
+  margin-top: -31px; 
+  margin-bottom: 0px;
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px;
 }
 
 /* NAVIGATION */
@@ -66,8 +92,15 @@ nav {
 /* INFORMATION SECTION */
 
 #informationSection {
-  margin-top: 15px;
+  /*margin-top: 15px;*/
   font-size: 16px;
+}
+
+.atcb-item-link {
+  padding-top:4px;
+  border: 1px solid transparent;
+  border-radius:4px;
+  max-width:94px;
 }
 
 .center-content {
@@ -89,6 +122,10 @@ nav {
 }
 
 /* REGISTRY SECTION */
+
+#registry-container > .row {
+  margin-top:40px;
+}
 
 .img-container {
   position:relative;
@@ -114,6 +151,10 @@ nav {
 
 #myModalLabel {
   text-align: center;
+}
+
+div#notes_input_section {
+  margin-top:5px;
 }
 
 input::-webkit-outer-spin-button,

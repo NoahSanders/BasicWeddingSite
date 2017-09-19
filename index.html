@@ -82,6 +82,8 @@
             </div>
         </div>
 
+        <hr>
+
         <div id="About" class="container">
             <h2 class="text-center">About Noah & Parker</h2>
             <p>
@@ -94,6 +96,8 @@
                 Now an elite power couple with the desire for total world domination, Parker and Noah are ready for the next step in their relationship: marriage. They ask their family and friends to join them on January 20th to celebrate their love and the joining of their two families as one superior family destined to lead the future of mankind. 
             </p>
         </div>
+
+        <hr>
 
         <!-- Information section -->
         <div id="WhenWhere" class="container">
@@ -130,8 +134,10 @@
             </div>
         </div>
 
+        <hr>
+
         <!-- Registry Section-->
-        <div id="Registry" class="container">
+        <div id="registry-container" class="container">
             <h2 class="text-center">Registry</h2>
             <div class="row">
                 <div class="col-lg-4 col-md-6 img-container center-content">
@@ -193,15 +199,26 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div id="notes_input_section" class="form-group hidden">
-                                        <label for="notes">Enter a note for us if you'd like</label>
-                                        <textarea class="form-control" id="notes_input" rows="3" maxlength="500"></textarea>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div id="guest_not_found_container" class="col-lg-12 hidden">
+                        <div id="guest_not_found_alert" class=" alert alert-danger" role="alert">
+                            Oh no! We weren't able to find your last name in the guest list. We may have spelled it incorrectly, so please enter your name, email address, and a note for us and we'll contact you to confirm.
+                        </div>
+                            <div class="col-lg-6">
+                                <label for="custom_name">Name:</label>
+                                <input id="custom_name" type="text" class="form-control evaluate_submit" maxlength="100">
                             </div>
+                            <div class="col-lg-6">
+                                <label for="contact_email">Email Address:</label>
+                                <input id="contact_email" type="email" class="form-control evaluate_submit" maxlength="50">
+                            </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div id="notes_input_section" class="form-group hidden">
+                            <label for="notes">Message:</label>
+                            <textarea class="form-control evaluate_submit" id="notes_input" rows="3" maxlength="500"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
