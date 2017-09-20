@@ -1,5 +1,5 @@
 /* GLOBAL */
-@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Source+Sans+Pro');
+@import url('http://fonts.googleapis.com/css?family=Oswald:700|Droid+Serif:400,700italic');
 
 @media (min-width: 900px) {
   .navbar-nav.navbar-center {
@@ -19,16 +19,31 @@ html,body
 }
 
 h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  line-height: 51px;
+  font-size: 46px;
+  text-transform: uppercase;
+  margin: 0 0 23px 0;
   margin-top:0px;
   padding-top:0px;
 }
 
-body {
-  /*font-family: 'Droid Serif', serif;*/
-  font-family: 'Source Sans Pro', sans-serif;
-  /*background-color: #DBC2CF;
-  color: #020202;*/
+h3 {
+  font-family: 'Droid Serif', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 23px;
+  /* margin: 0 0 23px 0; */
+}
 
+body {
+  font-family: 'Droid Serif', serif;
+  font-family: 'Droid Serif', serif;
+  font-size: 15px;
+  line-height: 23px;
+  margin: 0 0 23px 0;
   padding-top: 70px; 
 }
 
@@ -57,11 +72,38 @@ hr:before {
   border-radius: 20px;
 }
 
+/* BOOTSTRAP COMPONENT OVERRIDES */
+
+.btn-primary {
+  background-color: #1c3041;
+  border-color: #172836;
+}
+
+.alert-danger {
+  background-color: #F7D9D7;
+  border-color: #E1C6C4;
+}
+
+.list-group-item.active, .list-group-item.active:focus {
+  background-color: #1c3041;
+  border-color: #172836;
+}
+
+/* Page alerts */
+
+.page-alerts {
+  margin-bottom: 20px;
+}
+
+.page-alerts .page-alert {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
 /* NAVIGATION */
 
-nav {
-  /* TODO: give this a background color? */
-  /*background-color: #9FA2B2;*/
+.navbar-default {
+  background-color: #bdc5c9;
 }
 
 .navbar-btn {
@@ -73,8 +115,19 @@ nav {
   text-align: center;
 }
 
+.navbar-default .navbar-brand {
+  color: #333232;
+
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
 #main-navigation a {
   font-size: 18px;
+  color: #333232;  
 }
 
 /* IMAGE CAROUSEL */
@@ -94,6 +147,14 @@ nav {
 #informationSection {
   /*margin-top: 15px;*/
   font-size: 16px;
+}
+
+#WhenWhere a {
+  text-decoration: underline; 
+}
+
+#WhenWhere button a {
+  text-decoration: none;
 }
 
 .atcb-item-link {

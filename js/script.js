@@ -2,6 +2,8 @@ $(document).ready(pageSetup);
 const RsvpApiUrl = 'http://' + window.location.hostname + ':3000';
 
 function pageSetup() {
+    $('.page-alert').hide();
+
     //Set up add to calendar
     if (window.addtocalendar) if(typeof window.addtocalendar.start == "function") return;
     if (window.ifaddtocalendar == undefined) { 
@@ -74,10 +76,24 @@ function pageSetup() {
     $('.evaluate_submit').on("change keyup paste", function(event) {
         showHideSubmitButton();
     });
+
+    $('#rsvp_last_name').on("change keyup paste", function(event) {
+        if ($('#rsvp_last_name').val()) {
+            $('#name_search_submit').prop('disabled', false);
+        }
+        else {
+            $('#name_search_submit').prop('disabled', true);
+        }
+    });
+
+    $('.page-alert .close').click(function(e) {
+        e.preventDefault();
+        $(this).closest('.page-alert').slideUp();
+    });
 }
 
 function rsvpSubmit() {
-    if ($('#guest_not_found_alert').hasClass('hidden')) {
+    if ($('#guest_not_found_container').hasClass('hidden')) {
         const attendingString = isAttending() ? "Attending" : "Nope";
 
         let guestRequest = {
@@ -93,10 +109,11 @@ function rsvpSubmit() {
             type: 'PUT',
             data: guestRequest
         })
-        .done(function() {
-            //TODO: Need success logic
+        .done(function(data) {
+            showConfirmation();
         })
         .fail(function() {
+            console.log('rsvp guest call failed');
             //TODO: Need API fail logic
         });
     }
@@ -116,16 +133,30 @@ function rsvpSubmit() {
             type: 'POST',
             data: messageRequest
         })
-        .done(function() {
-            //TODO: Need success logic...?
-            
+        .done(function(data) {
+            showConfirmation();
         })
         .fail(function() {
             //TODO: Need API fail logic
+            console.log('rsvp message call failed');
         });
     }
 
-    $('#rsvp_modal').modal('toggle');
+    $('#rsvpModal').modal('toggle');
+    $('#main-navigation button').prop('disabled',true);
+}
+
+function showConfirmation() {
+    console.log('things are happening');
+    var alert;
+    if (isAttending()) {
+        alert = $('#rsvp-confirm-yes');
+    }
+    else {
+        alert = $('#rsvp-confirm-no');
+    }
+    alert.appendTo('.page-alerts');
+    alert.slideDown();
 }
 
 function findGuest() {  

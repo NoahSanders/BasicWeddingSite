@@ -20,6 +20,17 @@
         <![endif]-->
     </head>
     <body>
+        <div class="page-alerts">
+            <div class="alert alert-success page-alert" id="rsvp-confirm-yes" role="alert">
+                <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <strong>Thanks for your response!</strong> We can't wait to see you!
+            </div>
+            <div class="alert alert-success page-alert" id="rsvp-confirm-no" role=alert>
+                <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <strong>Thanks for your response!</strong> We are sorry that you can't make it.
+            </div>
+        </div>
+
         <!-- Navigation bar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -35,13 +46,13 @@
                 <div class="collapse navbar-collapse" id="main-navigation">
                     <ul class="nav navbar-nav navbar-center">
                         <li>
-                            <a href="#About">About Noah & Parker</a>
+                            <a href="#about-target">About Us</a>
                         </li>
                         <li>
-                            <a href="#WhenWhere">When & Where</a>
+                            <a href="#when-where-target">When & Where</a>
                         </li>
                         <li>
-                            <a href="#Registry">Registry</a>
+                            <a href="#registry-target">Registry</a>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-primary navbar-btn navbar-right" data-toggle="modal" data-target="#rsvpModal">RSVP</button>
@@ -82,6 +93,7 @@
             </div>
         </div>
 
+        <div id="about-target"></div>
         <hr>
 
         <div id="About" class="container">
@@ -97,6 +109,7 @@
             </p>
         </div>
 
+        <div id="when-where-target"></div>
         <hr>
 
         <!-- Information section -->
@@ -134,6 +147,7 @@
             </div>
         </div>
 
+        <div id="registry-target"></div>
         <hr>
 
         <!-- Registry Section-->
@@ -154,6 +168,7 @@
             </div>
         </div>
 
+        <!-- RSVP Modal -->
         <div class="modal fade" id="rsvpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -167,7 +182,7 @@
                             <div class="input-group" id="nameInput">
                                 <input type="text" id="rsvp_last_name" class="form-control" placeholder="Enter your last name here">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" id="name_search_submit">Search</button>
+                                    <button type="button" class="btn btn-primary" id="name_search_submit" disabled>Search</button>
                                 </span>
                             </div>
                             <div id="guest_full_name_input" class="hidden">
@@ -186,7 +201,7 @@
                                 
                                 <div class="col-lg-6">
                                     <div id="guest_number_input" class="hidden">
-                                        <label for="rsvp_guestNumber">Number of Guests</label>
+                                        <label for="rsvp_guestNumber"># of Guests</label>
                                         <div class="input-group" id="guestNumberInput">
                                             <span class="input-group-btn">
                                                 <button id="minusOne" class="btn btn-danger" type="button">-</button>
@@ -202,18 +217,17 @@
                         </div>
                     </div>
                     <div id="guest_not_found_container" class="col-lg-12 hidden">
-                        <div id="guest_not_found_alert" class=" alert alert-danger" role="alert">
+                        <div id="guest_not_found_alert" class="alert alert-danger" role="alert">
                             Oh no! We weren't able to find your last name in the guest list. We may have spelled it incorrectly, so please enter your name, email address, and a note for us and we'll contact you to confirm.
                         </div>
-                            <div class="col-lg-6">
-                                <label for="custom_name">Name:</label>
-                                <input id="custom_name" type="text" class="form-control evaluate_submit" maxlength="100">
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="contact_email">Email Address:</label>
-                                <input id="contact_email" type="email" class="form-control evaluate_submit" maxlength="50">
-                            </div>
-
+                        <div class="col-lg-6">
+                            <label for="custom_name">Name:</label>
+                            <input id="custom_name" type="text" class="form-control evaluate_submit" maxlength="100">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="contact_email">Email Address:</label>
+                            <input id="contact_email" type="email" class="form-control evaluate_submit" maxlength="50">
+                        </div>
                     </div>
                     <div class="col-lg-12">
                         <div id="notes_input_section" class="form-group hidden">
@@ -222,7 +236,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="rsvp_submit" type="button" class="btn btn-primary" data-dismiss="modal" disabled>Submit</button>
+                        <button id="rsvp_submit" type="button" class="btn btn-primary" data-dismiss="rsvpModal" disabled>Submit</button>
                     </div>
                 </div>
             </div>
