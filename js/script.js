@@ -152,6 +152,9 @@ function showConfirmation() {
     if (isAttending()) {
         alert = $('#rsvp-confirm-yes');
     }
+    else if (!$('#guest_not_found_container').hasClass('hidden')) {
+        alert = $('#rsvp-send-anon-message');
+    }
     else {
         alert = $('#rsvp-confirm-no');
     }
