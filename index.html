@@ -25,13 +25,19 @@
                 <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <strong>Thanks for your response!</strong> We can't wait to see you!
             </div>
-            <div class="alert alert-success page-alert" id="rsvp-confirm-no" role=alert>
+            <div class="alert alert-success page-alert" id="rsvp-confirm-no" role="alert">
                 <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <strong>Thanks for your response!</strong> We are sorry that you can't make it
             </div>
-            <div class="alert alert-success page-alert" id="rsvp-send-anon-message" role=alert>
+            <div class="alert alert-success page-alert" id="rsvp-send-anon-message" role="alert">
                 <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <strong>Thanks for your message!</strong> We will get back to you soon
+            </div>
+            <div class="alert alert-success page-alert" id="rsvp_attending_yes" role="alert">
+                <strong>Excellent!</strong> Please enter the total number of people who will be coming with you below (<strong>including yourself</strong>) and click submit.
+            </div>
+            <div class="alert alert-danger page-alert" id="rsvp_attending_no" role="alert">
+                <strong>We're sorry you can't attend.</strong> Feel free to leave us a message below and click submit.
             </div>
         </div>
 
@@ -226,14 +232,24 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div id="status_select_section" class="hidden">
-                                        <label for="status_select">RSVP Status</label>
-                                        <input type="checkbox" id="status_select">
+                                <div id="status_select_section" class="hidden">
+                                    <div class="col-lg-7">
+                                        <label>Will you attend?</label>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div id="status_select_button" class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-success active">
+                                                <input type="radio" name="rsvp_status" id="rsvp_status_yes" class="rsvp_status_option" autocomplete="off" checked>Yes</label>
+                                            </label>
+                                            <label class="btn btn-danger">
+                                                <input type="radio" name="rsvp_status" id="rsvp_status_no" class="rsvp_status_option" autocomplete="off">No</label>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
+                                    <div id="rsvp-alerts"></div>
                                     <div id="guest_number_input" class="hidden">
                                         <label for="rsvp_guestNumber"># of Guests</label>
                                         <div class="input-group" id="guestNumberInput">
@@ -265,7 +281,7 @@
                     </div>
                     <div class="col-lg-12">
                         <div id="notes_input_section" class="form-group hidden">
-                            <label for="notes">Message:</label>
+                            <label for="notes">Optional Message:</label>
                             <textarea class="form-control evaluate_submit" id="notes_input" rows="3" maxlength="500"></textarea>
                         </div>
                     </div>

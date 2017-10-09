@@ -275,18 +275,11 @@ input::-webkit-inner-spin-button {
   text-align: center;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
+#status_select_button {
+  width:100%;
+}
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #bdc5c9;
-  color: #333232;
-  font-size: 12px;
+#status_select_button label {
+  width:50%;
 }
 

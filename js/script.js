@@ -1,5 +1,6 @@
 $(document).ready(pageSetup);
 const RsvpApiUrl = 'http://' + window.location.hostname + ':3000';
+const checkmark = '&#10004;';
 
 function pageSetup() {
     $('.page-alert').hide();
@@ -18,16 +19,12 @@ function pageSetup() {
     $('#rsvp_submit').click(rsvpSubmit);
     $('#name_search_submit').click(findGuest);
 
-    $("#status_select").bootstrapToggle({
-        on: "I will attend",
-        off: "I can't attend",
-        width:"100%",
-        offstyle:"danger"
-    });
-
-    $('#status_select').change(function() {
+    $('#status_select_button label').on('change', '.rsvp_status_option', function() {
         showHideSubmitButton();
         showHideGuestNumber();
+        // removeCheckmark();
+        // addCheckmark();        
+        showRsvpNote();
     });
 
     $("#guest_count").change(function() {
@@ -147,7 +144,6 @@ function rsvpSubmit() {
 }
 
 function showConfirmation() {
-    console.log('things are happening');
     var alert;
     if (isAttending()) {
         alert = $('#rsvp-confirm-yes');
@@ -159,6 +155,19 @@ function showConfirmation() {
         alert = $('#rsvp-confirm-no');
     }
     alert.appendTo('.page-alerts');
+    alert.slideDown();
+}
+
+function showRsvpNote() {
+    $('#rsvp-alerts .page-alert').slideUp();
+    var alert;
+    if (isAttending()) {
+        alert = $('#rsvp_attending_yes');
+    }
+    else {
+        alert = $('#rsvp_attending_no');
+    }
+    alert.appendTo('#rsvp-alerts');
     alert.slideDown();
 }
 
@@ -193,6 +202,7 @@ function findGuest() {
                 
                 showHideGuestNumber();
                 showHideSubmitButton();
+                showRsvpNote();
             });
 
             showHideNotes();
@@ -218,7 +228,7 @@ function showHideGuestNumber() {
 }
 
 function isAttending() {
-    return $('#status_select').prop('checked');
+    return $('#rsvp_status_yes').prop('checked');
 }
 
 function showHideSubmitButton() {
@@ -268,3 +278,12 @@ function clearFields() {
     $('#custom_name').val('');
     $('#contact_email').val('');
 }
+
+function addCheckmark() {
+    $('#status_select_button .active').append('✔');
+}
+
+function removeCheckmark() {
+    $('#status_select_button').html(function(index,text){return text.replace('✔','');});
+}
+
