@@ -283,3 +283,22 @@ input::-webkit-inner-spin-button {
   width:50%;
 }
 
+/* Lodging Section */
+/* #hotel_section {
+  margin-bottom: 30px;
+} */
+
+#lodging-container {
+  margin-bottom: 30px;
+}
+
+#hotel_section address {
+  margin-bottom: 0px;
+}
+
+#lodging-container button {
+  margin-top: 20px;
+}
+#hotel_section h3 {
+  margin-top: 20px;
+}
